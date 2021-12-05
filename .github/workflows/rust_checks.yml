@@ -1,0 +1,45 @@
+name: Rust Format and Clippy Checks
+
+on:
+  push:
+    branches:
+      - development
+      - main
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  format-and-clippy:
+    name: Format and Clippy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          components: clippy, rustfmt
+          override: true
+      - run: rustup update
+      - run: rustup update nightly
+      - run: rustup default nightly
+      - run: rustup target add wasm32-unknown-unknown --toolchain nightly
+      - name: Format
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
+      - name: Clippy
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: -- -D warnings -W clippy::cognitive_complexity
+      - name: Clippy All Targets
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: --all-targets -- -D warnings

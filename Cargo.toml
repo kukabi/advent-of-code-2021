@@ -1,0 +1,8 @@
+[package]
+name = "advent-of-code-2021"
+version = "0.1.0"
+edition = "2021"
+authors = ["Kutsal K. Bilgin <kutsal@helikon.tech>"]
+
+[dependencies]
+itertools = "0.10.0"
