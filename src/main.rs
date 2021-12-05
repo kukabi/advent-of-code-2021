@@ -9,6 +9,8 @@ fn main() {
     match problem {
         "day_1_a" => day_1::day_1_a(),
         "day_1_b" => day_1::day_1_b(),
+        "day_2_a" => day_2::day_2_a(),
+        "day_2_b" => day_2::day_2_b(),
         _ => println!("Unknown problem: {}", problem),
     }
 }
