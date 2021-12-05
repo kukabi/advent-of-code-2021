@@ -6,9 +6,7 @@ pub fn day_1_a() {
         "{}",
         parse_input::<u16>("./input/day_1.txt")
             .tuple_windows()
-            .fold(0, |count, (first, second)| {
-                count + if second > first { 1 } else { 0 }
-            })
+            .fold(0, |count, (a, b)| { count + (b > a) as u16 })
     );
 }
 
@@ -17,7 +15,7 @@ pub fn day_1_b() {
         "{}",
         parse_input::<u16>("./input/day_1.txt")
             .tuple_windows()
-            .map(|a: (u16, u16, u16)| a.0 + a.1 + a.2)
+            .map(|(a, b, c)| a + b + c)
             .tuple_windows()
             .filter(|(a, b)| b > a)
             .count()
