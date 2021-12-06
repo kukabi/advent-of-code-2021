@@ -11,6 +11,7 @@ fn main() {
         "day_1_b" => day_1::day_1_b(),
         "day_2_a" => day_2::day_2_a(),
         "day_2_b" => day_2::day_2_b(),
-        _ => println!("Unknown problem: {}", problem),
+        "day_3_a" => day_3::day_3_a(),
+        _ => println!("Solution not ready for problem: {}", problem),
     }
 }
