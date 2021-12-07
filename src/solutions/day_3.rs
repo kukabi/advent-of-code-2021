@@ -1,8 +1,22 @@
 use itertools::Itertools;
 
 pub fn day_3_a() {
-    let gamma_binary_str = include_str!("../../input/day_3.txt")
-        .lines()
+    let lines: Vec<&str> = include_str!("../../input/day_3.txt").lines().collect();
+    let gamma = u32::from_str_radix(&get_binary_guide_str(&lines, true), 2).unwrap();
+    let epsilon = u32::from_str_radix(&get_binary_guide_str(&lines, false), 2).unwrap();
+    println!("{}", gamma * epsilon);
+}
+
+pub fn day_3_b() {
+    let lines: Vec<&str> = include_str!("../../input/day_3.txt").lines().collect();
+    let o2_rating = find_rating(&lines, true, 0);
+    let co2_rating = find_rating(&lines, false, 0);
+    println!("{}", o2_rating * co2_rating);
+}
+
+fn get_binary_guide_str(lines: &[&str], pick_ones: bool) -> String {
+    lines
+        .iter()
         .map(|line| {
             line.chars()
                 .map(|c| c.to_digit(2).unwrap() as i32)
@@ -23,9 +37,26 @@ pub fn day_3_a() {
             column_sums
         })
         .into_iter()
-        .map(|column_sum| if column_sum >= 0 { "1" } else { "0" })
-        .join("");
-    let gamma = u32::from_str_radix(&gamma_binary_str, 2).unwrap();
-    let epsilon = !gamma & ((1 << gamma_binary_str.len()) - 1);
-    println!("{}", gamma * epsilon);
+        .map(|column_sum| {
+            if (column_sum >= 0 && pick_ones) || (column_sum < 0 && !pick_ones) {
+                "1"
+            } else {
+                "0"
+            }
+        })
+        .join("")
+}
+
+fn find_rating(lines: &[&str], is_o2: bool, bit_position: usize) -> u32 {
+    let binary_guide_str = get_binary_guide_str(lines, is_o2);
+    let filtered_lines: Vec<&str> = lines
+        .iter()
+        .filter(|line| line.chars().nth(bit_position) == binary_guide_str.chars().nth(bit_position))
+        .copied()
+        .collect();
+    if filtered_lines.len() == 1 {
+        u32::from_str_radix(&filtered_lines[0].to_string(), 2).unwrap()
+    } else {
+        find_rating(&filtered_lines, is_o2, bit_position + 1)
+    }
 }
