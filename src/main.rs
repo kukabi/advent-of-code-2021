@@ -13,6 +13,7 @@ fn main() {
         "day_2_b" => day_2::day_2_b(),
         "day_3_a" => day_3::day_3_a(),
         "day_3_b" => day_3::day_3_b(),
+        "day_4_a" => day_4::day_4_a(),
         _ => println!("Solution not ready for problem: {}", problem),
     }
 }
