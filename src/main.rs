@@ -14,6 +14,7 @@ fn main() {
         "day_3_a" => day_3::day_3_a(),
         "day_3_b" => day_3::day_3_b(),
         "day_4_a" => day_4::day_4_a(),
+        "day_4_b" => day_4::day_4_b(),
         _ => println!("Solution not ready for problem: {}", problem),
     }
 }
