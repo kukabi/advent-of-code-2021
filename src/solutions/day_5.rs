@@ -1,15 +1,16 @@
 use std::cmp::Ordering::*;
 
+pub fn all() {
+    day_5_a();
+    day_5_b();
+}
+
 pub fn day_5_a() {
-    let start = std::time::Instant::now();
-    let count = solve(false);
-    println!("{} points. Elapsed time: {:?}.", count, start.elapsed());
+    println!("5a: {}", solve(false));
 }
 
 pub fn day_5_b() {
-    let start = std::time::Instant::now();
-    let count = solve(true);
-    println!("{} points. Elapsed time: {:?}.", count, start.elapsed());
+    println!("5b: {}", solve(true));
 }
 
 fn solve(include_diagonals: bool) -> usize {

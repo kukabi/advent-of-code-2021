@@ -1,8 +1,12 @@
 const SIZE: usize = 5;
 type Board = [[u16; SIZE]; SIZE];
 
+pub fn all() {
+    day_4_a();
+    day_4_b();
+}
+
 pub fn day_4_a() {
-    let start_time = std::time::Instant::now();
     let (numbers, mut boards) = read_numbers_and_boards();
     for number in numbers {
         for board in &mut boards {
@@ -12,9 +16,7 @@ pub fn day_4_a() {
                 }
             }
             if let Some(sum) = board_finish_sum(board) {
-                let score = number * sum;
-                let elapsed_time = start_time.elapsed();
-                println!("Score: {}. Elapsed time: {:?}.", score, elapsed_time);
+                println!("4a: {}", number * sum);
                 return;
             }
         }
@@ -23,7 +25,6 @@ pub fn day_4_a() {
 }
 
 pub fn day_4_b() {
-    let start_time = std::time::Instant::now();
     let (numbers, mut boards) = read_numbers_and_boards();
     let boards_count = boards.len();
     let mut finished_boards = vec![];
@@ -40,9 +41,7 @@ pub fn day_4_b() {
             if let Some(sum) = board_finish_sum(board) {
                 finished_boards.push(index);
                 if finished_boards.len() == boards_count {
-                    let score = number * sum;
-                    let elapsed_time = start_time.elapsed();
-                    println!("Score: {}. Elapsed time: {:?}.", score, elapsed_time);
+                    println!("4b: {}", number * sum);
                     return;
                 }
             }

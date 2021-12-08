@@ -6,6 +6,7 @@ use solutions::*;
 fn main() {
     let args = std::env::args().collect::<Vec<String>>();
     let problem = args.get(1).map(|s| s.as_str()).unwrap_or("None");
+    let start = std::time::Instant::now();
     match problem {
         "day_1_a" => day_1::day_1_a(),
         "day_1_b" => day_1::day_1_b(),
@@ -17,6 +18,14 @@ fn main() {
         "day_4_b" => day_4::day_4_b(),
         "day_5_a" => day_5::day_5_a(),
         "day_5_b" => day_5::day_5_b(),
+        "all" => {
+            day_1::all();
+            day_2::all();
+            day_3::all();
+            day_4::all();
+            day_5::all();
+        }
         _ => println!("Solution not ready for problem: {}", problem),
     }
+    println!("Elapsed time: {:?}.", start.elapsed());
 }

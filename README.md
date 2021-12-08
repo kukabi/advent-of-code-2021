@@ -1,11 +1,13 @@
 # 🎄 Advent of Code 2021 in Rust 🦀
 
-To display the solution for the first problem of day 1:
+To display the solution for the first and second problems of day 1:
 ```
 cargo run -- day_1_a
 ```
-And for the the second problem of day 1:
+Likewise for the rest of the days.
+
+All problems:
 ```
-cargo run -- day_1_b
+cargo run -- all
 ```
-And likewise for the rest of the days.
+Program output will have the running time information.

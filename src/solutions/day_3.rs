@@ -1,17 +1,22 @@
 use itertools::Itertools;
 
+pub fn all() {
+    day_3_a();
+    day_3_b();
+}
+
 pub fn day_3_a() {
     let lines: Vec<&str> = include_str!("../../input/day_3.txt").lines().collect();
     let gamma = u32::from_str_radix(&get_binary_guide_str(&lines, true), 2).unwrap();
     let epsilon = u32::from_str_radix(&get_binary_guide_str(&lines, false), 2).unwrap();
-    println!("{}", gamma * epsilon);
+    println!("3a: {}", gamma * epsilon);
 }
 
 pub fn day_3_b() {
     let lines: Vec<&str> = include_str!("../../input/day_3.txt").lines().collect();
     let o2_rating = find_rating(&lines, true, 0);
     let co2_rating = find_rating(&lines, false, 0);
-    println!("{}", o2_rating * co2_rating);
+    println!("3b: {}", o2_rating * co2_rating);
 }
 
 fn get_binary_guide_str(lines: &[&str], pick_ones: bool) -> String {
