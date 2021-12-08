@@ -1,5 +1,4 @@
 use std::cmp::Ordering::*;
-use std::collections::HashMap;
 
 pub fn day_5_a() {
     let start = std::time::Instant::now();
@@ -14,7 +13,8 @@ pub fn day_5_b() {
 }
 
 fn solve(include_diagonals: bool) -> usize {
-    let mut count_map: HashMap<(i32, i32), u16> = HashMap::new();
+    let mut map = [[0u16; 1000]; 1000];
+    let mut count = 0;
     include_str!("../../input/day_5.txt")
         .lines()
         .map(line_to_path)
@@ -26,7 +26,11 @@ fn solve(include_diagonals: bool) -> usize {
             let x_step = get_step(x, x2);
             let y_step = get_step(y, y2);
             loop {
-                count_map.insert((x, y), count_map.get(&(x, y)).unwrap_or(&0) + 1);
+                let current_value = map[x as usize][y as usize];
+                if current_value == 1 {
+                    count += 1;
+                }
+                map[x as usize][y as usize] = current_value + 1;
                 if x == x2 && y == y2 {
                     break;
                 }
@@ -34,10 +38,7 @@ fn solve(include_diagonals: bool) -> usize {
                 y += y_step;
             }
         });
-    count_map
-        .values()
-        .filter(|line_count| **line_count > 1)
-        .count()
+    count
 }
 
 fn line_to_path(line: &str) -> ((i32, i32), (i32, i32)) {
