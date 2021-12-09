@@ -18,12 +18,14 @@ fn main() {
         "day_4_b" => day_4::day_4_b(),
         "day_5_a" => day_5::day_5_a(),
         "day_5_b" => day_5::day_5_b(),
+        "day_6_a" => day_6::day_6_a(),
         "all" => {
             day_1::all();
             day_2::all();
             day_3::all();
             day_4::all();
             day_5::all();
+            day_6::all();
         }
         _ => println!("Solution not ready for problem: {}", problem),
     }
