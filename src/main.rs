@@ -19,6 +19,7 @@ fn main() {
         "day_5_a" => day_5::day_5_a(),
         "day_5_b" => day_5::day_5_b(),
         "day_6_a" => day_6::day_6_a(),
+        "day_6_b" => day_6::day_6_b(),
         "all" => {
             day_1::all();
             day_2::all();
