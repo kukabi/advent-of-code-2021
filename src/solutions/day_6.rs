@@ -16,10 +16,9 @@ fn solve(days: u16) -> u64 {
     include_str!("../../input/day_6.txt")
         .split(',')
         .for_each(|fish| map[fish.parse::<usize>().unwrap()] += 1);
-    (0..days)
-        .for_each(|_| {
-            map[7] += map[0];
-            map.rotate_left(1);
-        });
+    (0..days).for_each(|_| {
+        map[7] += map[0];
+        map.rotate_left(1);
+    });
     map.iter().sum()
 }
