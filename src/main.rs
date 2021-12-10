@@ -22,6 +22,8 @@ fn main() {
         "day_6_b" => day_6::day_6_b(),
         "day_7_a" => day_7::day_7_a(),
         "day_7_b" => day_7::day_7_b(),
+        "day_8_a" => day_7::day_8_a(),
+        "day_8_b" => day_7::day_8_b(),
         "all" => {
             day_1::all();
             day_2::all();
@@ -30,6 +32,7 @@ fn main() {
             day_5::all();
             day_6::all();
             day_7::all();
+            day_8::all();
         }
         _ => println!("Solution not ready for problem: {}", problem),
     }
