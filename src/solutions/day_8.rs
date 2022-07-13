@@ -1,5 +1,5 @@
-use std::collections::{HashMap, HashSet};
 use itertools::Itertools;
+use std::collections::{HashMap, HashSet};
 
 pub fn all() {
     day_8_a();
@@ -105,9 +105,8 @@ pub fn day_8_b() {
             let mut mul = 1;
             let mut sum = 0;
             for digit_str in outputs.split_whitespace().rev() {
-                let set = String::from_iter(digit_str.chars().map(
-                    |c| *map.get(&c).unwrap()
-                ).sorted());
+                let set =
+                    String::from_iter(digit_str.chars().map(|c| *map.get(&c).unwrap()).sorted());
                 let digit = *digit_map.get(set.as_str()).unwrap();
                 sum += digit * mul;
                 mul *= 10;
