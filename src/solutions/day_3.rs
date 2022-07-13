@@ -60,7 +60,7 @@ fn find_rating(lines: &[&str], is_o2: bool, bit_position: usize) -> u32 {
         .copied()
         .collect();
     if filtered_lines.len() == 1 {
-        u32::from_str_radix(&filtered_lines[0].to_string(), 2).unwrap()
+        u32::from_str_radix(filtered_lines[0], 2).unwrap()
     } else {
         find_rating(&filtered_lines, is_o2, bit_position + 1)
     }
